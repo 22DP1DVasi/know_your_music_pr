@@ -27,40 +27,40 @@
       overflow-x: hidden; 
       display: flex;
       flex-direction: column;
-      background-image: linear-gradient(to bottom left ,#63f6f8, #9ce3ff);
+      background-image: linear-gradient(to right ,#ffffff, #b3eaff);
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       /* height: 500px; You must set a specified height */
       background-position: center; /* Center the image */
-      background-repeat: no-repeat; /* Do not repeat the image */
+      background-repeat: no-repeat;
       background-size: cover; /* Resize the background image to cover the entire container */
     }
 
     :root {
-  --body-bg: #ffffff;
-  --text-color: #000000;
-  --header-bg: #f0f0f0;
-  --header-text: #000000;
-  --btn-bg: #007bff;
-  --btn-text: #ffffff;
-  --btn-bg-hover: #0056b3;
-}
+      --body-bg: #ffffff;
+      --text-color: #000000;
+      --header-bg: #f0f0f0;
+      --header-text: #000000;
+      --btn-bg: #007bff;
+      --btn-text: #ffffff;
+      --btn-bg-hover: #0056b3;
+    }
 
-:root.dark-mode {
-  --body-bg: #121212;
-  --text-color: #ffffff;
-  --header-bg: #1f1f1f;
-  --header-text: #ffffff;
-  --btn-bg: #1a73e8;
-  --btn-text: #ffffff;
-  --btn-bg-hover: #1665c1;
-}
+    :root.dark-mode {
+      --body-bg: #121212;
+      --text-color: #ffffff;
+      --header-bg: #1f1f1f;
+      --header-text: #ffffff;
+      --btn-bg: #1a73e8;
+      --btn-text: #ffffff;
+      --btn-bg-hover: #1665c1;
+    }
 
-body {
-  background-color: var(--body-bg);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
-}
+    body {
+      background-color: var(--body-bg);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
+    }
   </style>
 </html>

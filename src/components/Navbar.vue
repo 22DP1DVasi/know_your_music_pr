@@ -11,15 +11,16 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="navbar-button"><a href="#" style="color:white;">Home</a></li>
-                    <li>
+                    <li class="navbar-button"><a href="#" style="color:black;">Home</a></li>
+                    <!-- <li>
                         <a href="#" class="dropdown-toggle navbar-dropdown-button" data-toggle="dropdown" style="color: white;">Music <span class="caret"></span></a>
                         <ul class="dropdown-menu navbar-custom-dropdown">
                             <li><a href="../html/pages/music_explore.html">Explore</a></li>
                             <li><a href="#">Live</a></li>
                         </ul>
-                    </li>
-                    <li class="navbar-button"><a href="#" style="color:white;">Charts</a></li>
+                    </li> -->
+                    <li class="navbar-button"><a href="#" style="color:black;">Explore</a></li>
+                    <li class="navbar-button"><a href="#" style="color:black;">Lyrics</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" action="/action_page.php">
                     <div class="form-group">
@@ -28,8 +29,8 @@
                     <button type="submit" class="btn btn-default">Submit</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" style="color:white"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="#" style="color:black"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#" style="color:black"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                     <li>
                         <button id="darkModeToggle" class="btn btn-default navbar-btn" @click="toggleDarkMode">
                             <img src="/public/img/darkmodefavicon.png" alt="Dark Mode" width="22" height="22">
@@ -44,7 +45,7 @@
 <style scoped>
 
 .container-fluid {
-  background-color: #007c9ced;
+  background-color: rgb(185, 225, 255);
 }
 
 /*change Bootstrap dropdown*/
@@ -60,7 +61,7 @@
 }
 
 .navbar-button:hover {
-  background-color: #2598b4ed !important;
+  background-color: rgb(185, 225, 255) !important;
 }
 
 .navbar-dropdown-button:hover {
