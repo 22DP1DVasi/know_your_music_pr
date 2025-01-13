@@ -1,191 +1,154 @@
 <template>
 
-<div class="recommendations">
-        <p>Last recommendations:</p>
+  <div class="recommendations">
+          <p>Last recommendations:</p>
+  
+      <div class="flex-container">
+          <div class="column">
+              <img src="../../img/linkinpark.jpg" alt="Linkin Park" width="200" height="200">
+              <h1>Linkin Park</h1>
+              <p>One of the biggest rock and metal bands in the world.</p>
+              <button class="button">Listen</button>
+          </div>
+  
+          <div class="column">
+              <img src="../../img/celldweller.jpg" alt="Celldweller" width="200" height="200">
+              <h1>Celldweller</h1>
+              <p>Main electro-industrial-rock musician of 2000s.</p>
+              <button class="button">Listen</button>
+          </div>
+  
+          <div class="column">
+              <img src="../../img/tallah.jpeg" alt="Tallah" width="200" height="200">
+              <h1>Tallah</h1>
+              <p>Representative of modern nu-metal.</p>
+              <button class="button">Listen</button>
+          </div>
+      </div>
+  
+      <div class="flex-container">
+          <div class="column">
+              <img src="../../img/linkinpark.jpg" alt="Linkin Park" width="200" height="200">
+              <h1>Linkin Park</h1>
+              <p>One of the biggest rock and metal bands in the world.</p>
+              <button class="button">Listen</button>
+          </div>
+  
+          <div class="column">
+              <img src="../../img/celldweller.jpg" alt="Celldweller" width="200" height="200">
+              <h1>Celldweller</h1>
+              <p>Main electro-industrial-rock musician of 2000s.</p>
+              <button class="button">Listen</button>
+          </div>
+  
+          <div class="column">
+              <img src="../../img/tallah.jpeg" alt="Tallah" width="200" height="200">
+              <h1>Tallah</h1>
+              <p>Representative of modern nu-metal.</p>
+              <button class="button">Listen</button>
+          </div>
+      </div>
     </div>
+  
+  </template>
+  
+  <style scoped>
 
-    <div class="flex-container">
-        <div class="column">
-            <img src="../../img/linkinpark.jpg" alt="Linkin Park" width="200" height="200">
-            <h1>Linkin Park</h1>
-            <p>One of the biggest rock and metal bands in the world.</p>
-            <button class="button">Listen</button>
-        </div>
+  .flex-container {
+    display: flex;
+    justify-content: center; /* center horizontally */
+    align-items: center; /* center vertically */
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1 1 300px; /* Set card size to approximately 300px wide */
+    max-width: 300px; /* Ensure cards don't exceed this width */
+    min-height: 400px; /* Set a smaller height for the cards */
+    border: 5px solid #007c9ced;
+    padding: 15px; /* Add inner spacing */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+    border-radius: 10px; /* Rounded corners for a clean look */
+    background-color: white; /* Optional: Add background color */
+  }
+  
+  .column img {
+    width: 100%; /* Adjust image width to match card size */
+    max-height: 150px; /* Set a limit for the image height */
+    object-fit: cover; /* Ensure images fit properly */
+    border-radius: 8px; /* Add rounded corners to images */
+    margin-bottom: 10px; /* Spacing below the image */
+  }
+  
+  .column > h1 {
+    font-size: 18px; /* Smaller font size */
+    line-height: 1.2em;
+    margin: 10px 0; /* Reduce margins */
+    text-align: center;
+  }
+  
+  .column > p {
+    font-size: 14px; /* Smaller font size */
+    text-align: center;
+    margin: 10px 0; /* Reduce spacing */
+  }
+  
+  .button {
+    width: 100px; /* Reduce button width */
+    height: 30px; /* Adjust button height */
+    font-size: 14px; /* Smaller font size */
+    background-color: #52ffffed;
+    color: black;
+    border: 2px solid #2b6fec;
+    margin-top: auto; /* Push button to the bottom of the card */
+  }
+  
+  .button:hover {
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
+    animation: hoverUp 0.3s forwards;
+  }
+  
+  .column:hover{
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
+    animation: hoverUp 0.5s forwards;
+  }
+  
+  .recommendations {
+    padding-top: 2%;
+    padding-left: 1.5%;
+    font-size: 190%;
+    margin-left: 2%;
+    margin-bottom: 1%;
+  }
+  
+  @keyframes hoverUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-5px) scale(1.05);
+    }
+  }
 
-        <div class="column">
-            <img src="../../img/celldweller.jpg" alt="Celldweller" width="200" height="200">
-            <h1>Celldweller</h1>
-            <p>Main electro-industrial-rock musician of 2000s.</p>
-            <button class="button">Listen</button>
-        </div>
+  @media (max-width: 1015px) {
+  .flex-container {
+    display: block; /* Change from flex to block layout for scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping to new lines */
+    padding: 10px;
+  }
 
-        <div class="column">
-            <img src="../../img/tallah.jpeg" alt="Tallah" width="200" height="200">
-            <h1>Tallah</h1>
-            <p>Representative of modern nu-metal.</p>
-            <button class="button">Listen</button>
-        </div>
-    </div>
-
-    <div class="flex-container">
-        <div class="column">
-            <img src="../../img/linkinpark.jpg" alt="Linkin Park" width="200" height="200">
-            <h1>Linkin Park</h1>
-            <p>One of the biggest rock and metal bands in the world.</p>
-            <button class="button">Listen</button>
-        </div>
-
-        <div class="column">
-            <img src="../../img/celldweller.jpg" alt="Celldweller" width="200" height="200">
-            <h1>Celldweller</h1>
-            <p>Main electro-industrial-rock musician of 2000s.</p>
-            <button class="button">Listen</button>
-        </div>
-
-        <div class="column">
-            <img src="../../img/tallah.jpeg" alt="Tallah" width="200" height="200">
-            <h1>Tallah</h1>
-            <p>Representative of modern nu-metal.</p>
-            <button class="button">Listen</button>
-        </div>
-    </div>
-
-</template>
-
-<style scoped>
-
-.flex-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  padding: 0 4px;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  align-items: stretch;
+  .column {
+    display: inline-block; /* Align cards horizontally */
+    vertical-align: top; /* Ensure cards stay aligned at the top */
+    margin-right: 20px; /* Add spacing between cards */
+  }
 }
-
-.column {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  margin: 20px auto;
-  flex: 1 1 25%;
-  max-width: 500px;
-  padding: 0 4px;
-  gap: 20px;
-  border: 5px solid #007c9ced;
-  padding-top: 5px;
-  align-items: center;
-  min-height: 300px;
-}
-
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  margin: auto;
-}
-
-.column > h1 {
-  display: -webkit-box;
-  -webkit-box-orient: vertical; 
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-align: center;
-  justify-content: center;
-  font-size: clamp(30px, 4vw, 45px);
-  line-height: 1.2em;
-  margin-bottom: 7px;
-}
-
-.column > p {
-  height: 4.5em;  /* three rows for text */
-  overflow: hidden;
-  display: -webkit-box; /* using older browser WebKit versions  */
-  -webkit-line-clamp: 3; /* Limit text to three lines */
-  -webkit-box-orient: vertical;   /* Set vertical orientation */
-  font-size: clamp(23px, 2vw, 27px); /* Responsive text size */
-  text-align: center;
-  justify-content: center;
-  margin-bottom: auto;
-}
-
-.button {
-  width: 150px;
-  height: 30px;
-  background-color: #52ffffed;
-  color: black;
-  border: 2px solid #2b6fec;
-  margin-top: auto; /* places the button down */
-  margin-bottom: 20px; /* adds bottom margin */
-  font-size: 20px;
-}
-
-.button:hover {
-  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
-  animation: hoverUp 0.5s forwards; /*hoverUp - keyframes animation*/
-}
-
-.column:hover{
-  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.6);
-  animation: hoverUp 0.5s forwards;
-}
-
-.recommendations {
-  padding-top: 2%;
-  padding-left: 1.5%;
-  font-size: 190%;
-  margin-left: 2%;
-  margin-bottom: 1%;
-}
-
-@keyframes hoverUp {
-  0% {transform: translateY(0) translateX(0) ;}   /*animation starts*/
-  100% {transform: translateY(-10px) translateX(-1px) scale(1.02);} /*animation ends*/
-}
-
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media (max-width: 800px) {
-.column {
-  flex: 1 1 calc(50% - 5px);
-  max-width: 100%;
-}
-.flex-container{
-  flex: 1 1 calc(50% - 5px);
-  max-width: 100%;
-}
-
-.column > h1 {
-  font-size: 50px;
-  font-size: 5vw;
-}
-}
-
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media (max-width: 600px) {
-.column {
-  flex: 1 1 calc(100% - 5px);
-  max-width: 100%;
-}
-.flex-container{
-  flex: 1 1 calc(100% - 5px);
-  max-width: 100%;
-}
-
-.column > h1 {
-  font-size: 50px;
-  font-size: 5vw;
-}
-
-.footer ul {
-  flex-direction: column; /* Перестройка в колонку на маленьких экранах */
-  align-items: center; /* Центрирует элементы списка */
-}
-
-.footer ul li {
-  margin: 5px 0; /* Уменьшаем отступы для компактности */
-}
-}
-
+  
 </style>
-

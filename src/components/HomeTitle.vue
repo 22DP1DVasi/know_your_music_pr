@@ -9,31 +9,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
 
 .greeting {
-  position: relative;
-  align-items: stretch;
-  margin: auto;
-  font-size: 270%;
-  text-align: center;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  justify-content: center; /* center items vertically */
+  align-items: left; /* center items horizontally */
+  width: 60%;
+  margin: auto; /* center the container horizontally */
+  font-size: 4rem;
+  text-align: justify; /* Center-align the text */
   font-family: 'Montserrat', sans-serif;
-  color: white;
-  padding-top: 7px;
-  margin-top: -20px;
-  background-image: url("../../public/img/home_greeting_background.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 20px; /* Add spacing inside the container */
-  z-index: 1; /* Ensure content is above the overlay */
+  color: black;
+  padding-top: 5%;
 }
 
-.greeting::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); 
-  z-index: -1; 
+@media (max-width: 1363px) {
+  .greeting {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .greeting {
+    font-size: 2rem; /* Smaller font for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .greeting {
+    font-size: 2.5rem; /* Smallest font for very small screens */
+    width: 90%;
+  }
 }
 
 </style>
