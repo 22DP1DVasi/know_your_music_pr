@@ -19,7 +19,7 @@
   text-align: justify; /* Center-align the text */
   font-family: 'Montserrat', sans-serif;
   color: black;
-  padding-top: 5%;
+  padding-top: 10%;
 }
 
 @media (max-width: 1363px) {
