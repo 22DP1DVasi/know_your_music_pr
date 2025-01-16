@@ -136,7 +136,7 @@
     }
   }
 
-  @media (max-width: 1015px) {
+  @media (max-width: 1140px) {
   .flex-container {
     display: block; /* Change from flex to block layout for scrolling */
     overflow-x: auto; /* Enable horizontal scrolling */
