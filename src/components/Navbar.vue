@@ -187,6 +187,7 @@ nav ul li a:hover {
 }
 .menubar.active {
     left: 0;
+    width: 40%;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
@@ -216,6 +217,12 @@ nav ul li a:hover {
 }
 
 /* Media Query for Mobile */
+@media screen and (max-width: 1370px){
+  .search {
+    width: 90%;
+  }
+}
+
 @media screen and (max-width: 790px) {
     .hamburger {
         display: block;
@@ -224,6 +231,19 @@ nav ul li a:hover {
         display: none;
     }
 }
+
+@media screen and (max-width: 600px){
+  .menubar.active {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 430px){
+  .menubar.active {
+    width: 85%;
+  }
+}
+
 </style>
 
 <script>
