@@ -18,22 +18,40 @@
           <li><a href="/about">About</a></li>
           <li><a href="/login">Login</a></li>
         </ul>
-        <!-- hamburger menu -->
-        <div class="hamburger" @click="toggleNav">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-        </div>
+      <!-- search button for mobile -->
+      <button class="mobile-search-button" @click="toggleMobileSearch" v-show="isMobile">
+        <i class="fa fa-search"></i>
+      </button>
+      <!-- hamburger menu -->
+      <div class="hamburger" @click="toggleNav">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+      </div>
     </nav>
     <!-- menubar for mobiles -->
+    <div 
+      class="overlay" 
+      :class="{ active: isMenuActive }" 
+      @click="toggleNav"
+    ></div>
     <div class="menubar" :class="{ active: isMenuActive }">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/explore">Explore</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/explore">Explore</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
     </div>
+    <!-- search bar for mobile -->
+  <div v-show="isMobileSearchActive" class="mobile-search-container">
+    <div class="search">
+      <input type="text" class="searchTerm" placeholder="Search..." />
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -57,6 +75,7 @@
 }
 
 .searchButton {
+  position: relative; /* Ensure a positioned ancestor for the ::after pseudo-element */
   width: 40px;
   height: 36px;
   border: 1px solid #54b3ebed;
@@ -66,7 +85,7 @@
   border-radius: 0 7px 7px 0;
   cursor: pointer;
   font-size: 20px;
-  position: relative; /* ensure positioning for the icon transition */
+  overflow: hidden; /* Prevent visual overflow */
 }
 
 /* Transition the icon */
@@ -82,23 +101,26 @@
 
 /* add the music icon after hover */
 .searchButton:hover::after {
-  content: "\f001";   /* unicode for FontAwesome fa-music */
+  content: "\f001"; /* Unicode for FontAwesome fa-music */
   font-family: "FontAwesome";
   font-size: 20px;
   color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1); /* center the icon and scale it up */
+  transform: translate(-50%, -50%) scale(1); /* Center the icon and scale it up */
   opacity: 1;
-  transition: all 0.3s ease; /* smooth appearance */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth appearance */
 }
 
-/* initially, the music icon is hidden */
+/* Initially, the music icon is hidden */
 .searchButton::after {
   content: "";
   opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5); /* start small */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5); /* Start small */
 }
 
 .wrap{
@@ -109,14 +131,54 @@
   transform: translate(-50%, -50%);
 }
 
+/* Mobile search container */
+.mobile-search-container {
+  background-color: rgb(185, 225, 255);
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px;
+}
+
+/* Mobile search button */
+.mobile-search-button {
+  background: none;
+  border: none;
+  font-size: 23px;
+  cursor: pointer;
+  color: #000;
+  margin-left: 10px;
+}
+
 .menubar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column; /* stack items vertically */
-    align-items: center; /* center items horizontally */
-    justify-content: center; /* center items vertically */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* stack items vertically */
+  align-items: center; /* center items horizontally */
+  justify-content: center; /* center items vertically */
+}
+
+/* Overlay to cover the screen when the menu is active */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1; /* Same as the menubar z-index or slightly lower */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 .menubar li {
@@ -163,12 +225,12 @@ nav ul li a:hover {
 }
 
 .hamburger .line {
-    width: 25px;
-    height: 2px;
-    background-color: #ffffff;
-    display: block;
-    margin: 7px auto;
-    transition: all 0.3s ease-in-out;
+  width: 25px;
+  height: 2px;
+  background-color: #ffffff;
+  display: block;
+  margin: 7px auto;
+  transition: all 0.3s ease-in-out;
 }
 
 .menubar {
@@ -224,12 +286,19 @@ nav ul li a:hover {
 }
 
 @media screen and (max-width: 790px) {
-    .hamburger {
-        display: block;
-    }
-    nav ul {
-        display: none;
-    }
+  .hamburger {
+    display: block;
+  }
+
+  nav ul {
+    display: none; /* Completely remove the nav elements from the layout */
+  }
+
+  .mobile-search-button {
+    position: absolute;
+    right: 55px; /* move it closer to the hamburger menu */
+    width: auto;
+  }
 }
 
 @media screen and (max-width: 600px){
@@ -247,22 +316,25 @@ nav ul li a:hover {
 </style>
 
 <script>
-
-import { ref } from 'vue';
+import { ref, onMounted } from "vue";
 
 export default {
   setup() {
     // Dark mode state
-    const isDarkMode = ref(localStorage.getItem('darkMode') === 'true');
+    const isDarkMode = ref(localStorage.getItem("darkMode") === "true");
 
     // Menu state
     const isMenuActive = ref(false);
 
+    // Mobile state
+    const isMobile = ref(false);
+    const isMobileSearchActive = ref(false);
+
     // Toggle dark mode function
     const toggleDarkMode = () => {
       isDarkMode.value = !isDarkMode.value;
-      document.documentElement.classList.toggle('dark-mode', isDarkMode.value);
-      localStorage.setItem('darkMode', isDarkMode.value);
+      document.documentElement.classList.toggle("dark-mode", isDarkMode.value);
+      localStorage.setItem("darkMode", isDarkMode.value);
     };
 
     // Toggle navigation menu function
@@ -270,18 +342,36 @@ export default {
       isMenuActive.value = !isMenuActive.value;
     };
 
+    // Toggle mobile search bar visibility
+    const toggleMobileSearch = () => {
+      isMobileSearchActive.value = !isMobileSearchActive.value;
+    };
+
+    // Handle screen size changes to detect mobile view
+    const handleResize = () => {
+      isMobile.value = window.innerWidth <= 790;
+    };
+
     // Apply dark mode on mount if it's active
     if (isDarkMode.value) {
-      document.documentElement.classList.add('dark-mode');
+      document.documentElement.classList.add("dark-mode");
     }
+
+    // Add resize event listener on mount
+    onMounted(() => {
+      window.addEventListener("resize", handleResize);
+      handleResize(); // Check screen size on initial load
+    });
 
     return {
       isDarkMode,
       toggleDarkMode,
       isMenuActive,
       toggleNav,
+      isMobile,
+      isMobileSearchActive,
+      toggleMobileSearch,
     };
   },
 };
-
 </script>
