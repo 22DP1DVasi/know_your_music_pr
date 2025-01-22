@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <!-- <img src="/public/favicon.png" alt="Logo" width="50" height="52"> -->
-    <p>Know Your Music</p>
+    <p style="font-family: Arial, Helvetica, sans-serif;">Know Your Music</p>
     <ul>
       <li>
         <div class="wrap">
@@ -37,7 +36,7 @@
   ></div>
   <div class="menubar" :class="{ active: isMenuActive }">
     <div class="menubar-header">
-      <span>Menu</span>
+      <span>MENU</span>
     </div>
     <ul>
       <li><a href="/">Home</a></li>
@@ -160,12 +159,13 @@
   top: 0;
   left: -60%;
   display: flex;
+  font-family: Arial, Helvetica, sans-serif;
   justify-content: center;
   align-items: flex-start;
   width: 60%;
   height: 100vh;
   padding: 20% 0;
-  background: rgba(255, 255, 255);
+  background-color: rgb(201, 229, 250);
   transition: all 0.5s ease-in;
   z-index: 500;
 }
@@ -195,13 +195,17 @@
   border-radius: 5px;
 }
 
+.menubar ul li a:hover {
+  background-color: #91e3f8ed;
+}
+
 .menubar-header {
   position: absolute; /* fixed at the top of the menubar */
   top: 0;
   left: 0;
   width: 100%;
   height: 50px;
-  background-color: #ffffff;
+  background-color: rgb(185, 225, 255);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -209,6 +213,7 @@
   box-sizing: border-box; /* include padding in the element's width */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  font-size: 1.3rem;
 }
 
 /* vverlay to cover the screen when the menu is active */
@@ -231,23 +236,23 @@
 }
 
 nav {
-    background-color: rgb(185, 225, 255);
-    padding: 5px 2%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    z-index: 1;
-    height: 55px;
+  background-color: rgb(185, 225, 255);
+  padding: 5px 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1;
+  height: 55px;
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 
 nav ul li {
-    margin-left: 0.5rem;
+  margin-left: 2rem;
 }
 
 nav ul li a {
@@ -265,8 +270,8 @@ nav ul li a:hover {
 }
 
 .hamburger {
-    display: none;
-    cursor: pointer;
+  display: none;
+  cursor: pointer;
 }
 
 .hamburger .line {
