@@ -1,49 +1,52 @@
 <template>
-    <nav>
-      <!-- <img src="/public/favicon.png" alt="Logo" width="50" height="52"> -->
-       <p>Know Your Music</p>
-        <ul>
-          <li>
-            <div class="wrap">
-              <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search...">
-                <button type="submit" class="searchButton">
-                  <i class="fa fa-search"></i>
-                </button>
-              </div>
-            </div>
-          </li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/explore">Explore</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/login">Login</a></li>
-        </ul>
-      <!-- search button for mobile -->
-      <button class="mobile-search-button" @click="toggleMobileSearch" v-show="isMobile">
-        <i class="fa fa-search"></i>
-      </button>
-      <!-- hamburger menu -->
-      <div class="hamburger" @click="toggleNav">
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
-      </div>
-    </nav>
-    <!-- menubar for mobiles -->
-    <div 
-      class="overlay" 
-      :class="{ active: isMenuActive }" 
-      @click="toggleNav"
-    ></div>
-    <div class="menubar" :class="{ active: isMenuActive }">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/explore">Explore</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/login">Login</a></li>
-      </ul>
+  <nav>
+    <!-- <img src="/public/favicon.png" alt="Logo" width="50" height="52"> -->
+    <p>Know Your Music</p>
+    <ul>
+      <li>
+        <div class="wrap">
+          <div class="search">
+            <input type="text" class="searchTerm" placeholder="Search...">
+            <button type="submit" class="searchButton">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/explore">Explore</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+    <!-- search button for mobile -->
+    <button class="mobile-search-button" @click="toggleMobileSearch" v-show="isMobile">
+      <i class="fa fa-search"></i>
+    </button>
+    <!-- hamburger menu -->
+    <div class="hamburger" @click="toggleNav">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
     </div>
-    <!-- search bar for mobile -->
+  </nav>
+  <!-- menubar for mobiles -->
+  <div 
+    class="overlay" 
+    :class="{ active: isMenuActive }" 
+    @click="toggleNav"
+  ></div>
+  <div class="menubar" :class="{ active: isMenuActive }">
+    <div class="menubar-header">
+      <span>Menu</span>
+    </div>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/explore">Explore</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+  <!-- search bar for mobile -->
   <div v-show="isMobileSearchActive" class="mobile-search-container">
     <div class="search">
       <input type="text" class="searchTerm" placeholder="Search..." />
@@ -152,25 +155,71 @@
   margin-left: 10px;
 }
 
-.menubar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+.menubar {
+  position: absolute;
+  top: 0;
+  left: -60%;
   display: flex;
-  flex-direction: column; /* stack items vertically */
-  align-items: center; /* center items horizontally */
-  justify-content: center; /* center items vertically */
+  justify-content: center;
+  align-items: flex-start;
+  width: 60%;
+  height: 100vh;
+  padding: 20% 0;
+  background: rgba(255, 255, 255);
+  transition: all 0.5s ease-in;
+  z-index: 500;
 }
 
-/* Overlay to cover the screen when the menu is active */
+.menubar.active {
+  left: 0;
+  width: 40%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.menubar ul {
+  padding: 0;
+  list-style: none;
+}
+
+.menubar ul li {
+    margin-bottom: 32px;
+  font-size: 1.3em;
+}
+
+.menubar ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 95%;
+  font-weight: 400;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.menubar-header {
+  position: absolute; /* fixed at the top of the menubar */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  box-sizing: border-box; /* include padding in the element's width */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+/* vverlay to cover the screen when the menu is active */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  z-index: 1; /* Same as the menubar z-index or slightly lower */
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -179,10 +228,6 @@
 .overlay.active {
   opacity: 1;
   visibility: visible;
-}
-
-.menubar li {
-    margin: 10px;
 }
 
 nav {
@@ -233,49 +278,8 @@ nav ul li a:hover {
   transition: all 0.3s ease-in-out;
 }
 
-.menubar {
-    position: absolute;
-    top: 0;
-    left: -60%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 60%;
-    height: 100vh;
-    padding: 20% 0;
-    background: rgba(255, 255, 255);
-    transition: all 0.5s ease-in;
-    z-index: 2;
-}
-.menubar.active {
-    left: 0;
-    width: 40%;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.menubar ul {
-    padding: 0;
-    list-style: none;
-}
-.menubar ul li {
-    margin-bottom: 32px;
-}
-
-.menubar ul li a {
-    text-decoration: none;
-    color: #000;
-    font-size: 95%;
-    font-weight: 400;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
 .icon {
     font-size: 1.2rem;
-}
-
-.menubar ul li a:hover {
-    background-color: #ac60bf;
 }
 
 /* Media Query for Mobile */
