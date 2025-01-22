@@ -58,11 +58,56 @@
 
 <style scoped>
 
+nav {
+  background-color: rgb(185, 225, 255);
+  padding: 5px 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 1;
+  height: 55px;
+  position: relative; /* ensure the navbar acts as the containing block for absolute positioning */
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 2rem;
+}
+
+nav ul li a {
+  text-decoration: none;
+  background-color: rgb(185, 225, 255);
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  padding: 4px 8px;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background-color: #91e3f8ed;
+}
+
+.wrap {
+  width: 25%;
+  position: absolute; /* position relative to the Navbar */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* adjust for true center */
+  z-index: 2;
+}
+
 .search {
   margin: 0 auto;
-  width: 70%;
-  position: relative;
+  width: 100%;
+  position: relative; /* ensure children are positioned relative to this */
   display: flex;
+  z-index: 1;
 }
 
 .searchTerm {
@@ -123,14 +168,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.5); /* Start small */
-}
-
-.wrap{
-  width: 30%;
-  position: absolute;
-  top: 3.5%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 /* Mobile search container */
@@ -235,40 +272,6 @@
   visibility: visible;
 }
 
-nav {
-  background-color: rgb(185, 225, 255);
-  padding: 5px 2%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  z-index: 1;
-  height: 55px;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-}
-
-nav ul li {
-  margin-left: 2rem;
-}
-
-nav ul li a {
-  text-decoration: none;
-  background-color: rgb(185, 225, 255);
-  color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 400;
-  padding: 4px 8px;
-  border-radius: 5px;
-}
-
-nav ul li a:hover {
-  background-color: #91e3f8ed;
-}
-
 .hamburger {
   display: none;
   cursor: pointer;
@@ -292,6 +295,19 @@ nav ul li a:hover {
   .search {
     width: 90%;
   }
+}
+
+@media screen and (max-width: 1000px){
+  nav ul li a {
+    padding: 0px 0px;
+  }
+
+  .wrap {
+    top: 50%;
+    left: 50%;
+    transform: translate(-70%, -50%); /* adjust for true center */
+  }
+
 }
 
 @media screen and (max-width: 790px) {
