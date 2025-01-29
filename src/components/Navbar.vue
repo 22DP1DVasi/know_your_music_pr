@@ -15,7 +15,8 @@
       <li><a href="/">Home</a></li>
       <li><a href="/explore">Explore</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/login">Login</a></li>
+      <li><a href="/login">Log In</a></li>
+      <li><a href="/signup">Sign Up</a></li>
     </ul>
     <!-- search button for mobile -->
     <button class="mobile-search-button" @click="toggleMobileSearch" v-show="isMobile">
@@ -42,7 +43,8 @@
       <li><a href="/">Home</a></li>
       <li><a href="/explore">Explore</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/login">Login</a></li>
+      <li><a href="/login">Log In</a></li>
+      <li><a href="/signup">Sign Up</a></li>
     </ul>
   </div>
   <!-- search bar for mobile -->
@@ -216,10 +218,11 @@ nav ul li a:hover {
 .menubar ul {
   padding: 0;
   list-style: none;
+  margin-top: 20%;
 }
 
 .menubar ul li {
-    margin-bottom: 32px;
+  margin-bottom: 32px;
   font-size: 1.3em;
 }
 
@@ -229,11 +232,6 @@ nav ul li a:hover {
   font-size: 95%;
   font-weight: 400;
   padding: 5px 10px;
-  border-radius: 5px;
-}
-
-.menubar ul li a:hover {
-  background-color: #91e3f8ed;
 }
 
 .menubar-header {
@@ -295,12 +293,20 @@ nav ul li a:hover {
   .search {
     width: 90%;
   }
-}
 
-@media screen and (max-width: 1000px){
   nav ul li a {
     padding: 0px 0px;
   }
+}
+
+@media screen and (max-width: 1000px){
+  .search {
+    width: 80%;
+  }
+
+  /* nav ul li a {
+    padding: 0px 0px;
+  } */
 
   .wrap {
     top: 50%;
@@ -310,7 +316,7 @@ nav ul li a:hover {
 
 }
 
-@media screen and (max-width: 790px) {
+@media screen and (max-width: 910px) {
   .hamburger {
     display: block;
   }
@@ -374,7 +380,7 @@ export default {
 
     // Handle screen size changes to detect mobile view
     const handleResize = () => {
-      isMobile.value = window.innerWidth <= 790;
+      isMobile.value = window.innerWidth <= 910;
     };
 
     // Apply dark mode on mount if it's active
